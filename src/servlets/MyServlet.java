@@ -1,4 +1,4 @@
-package com.javapro.servlets;
+package servlets;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,13 +15,20 @@ public class MyServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doGet(req, resp);
+
+
+        resp.setContentType("text/html");
+        resp.setCharacterEncoding("UTF-8");
         PrintWriter out = resp.getWriter();
+
         out.print("<h1>У меня получилось сделать это!</h1>");
+        out.print("");
     }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+
     }
+
+
 }
