@@ -10,11 +10,16 @@ import java.io.PrintWriter;
 /**
  * Created by Paul Brown on 20.12.2016.
  */
-public class MyServlet extends HttpServlet {
+public class Authorise extends HttpServlet {
 
+    private String userurl = "files/text/users.txt";
 
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        req.setCharacterEncoding("UTF-8");
+        String login = req.getParameter("login");
+        String pass = req.getParameter("pass");
 
 
         resp.setContentType("text/html");
@@ -22,13 +27,7 @@ public class MyServlet extends HttpServlet {
         PrintWriter out = resp.getWriter();
 
         out.print("<h1>У меня получилось сделать это!</h1>");
-        out.print("");
+        out.print("log " + login + "; pass " + pass);
     }
-
-    @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-    }
-
 
 }

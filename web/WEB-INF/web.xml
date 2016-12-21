@@ -11,13 +11,13 @@
     </welcome-file-list>
 
     <servlet>
-        <servlet-name>myServlet</servlet-name>
-        <servlet-class>servlets.MyServlet</servlet-class>
+        <servlet-name>Authorise</servlet-name>
+        <servlet-class>servlets.Authorise</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>myServlet</servlet-name>
-        <url-pattern>/log.in</url-pattern>
+        <servlet-name>Authorise</servlet-name>
+        <url-pattern>/log</url-pattern>
     </servlet-mapping>
 
 </web-app>

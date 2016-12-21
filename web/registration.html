@@ -17,23 +17,23 @@
                 var passtwo = $('#passtwo').val();
                 if (firstname.length <= 0){
                     bool = false;
-                    $('#firstnameerr').val('введите имя');
+                    $('#firstnameerr').append('введите имя');
                 }
                 if (lastname.length <= 0){
                     bool = false;
-                    $('#lastnameerr').val('введите фамилию');
+                    $('#lastnameerr').append('введите фамилию');
                 }
                 if (email.length <= 0){
                     bool = false;
-                    $('#emailerr').val('введите имя');
+                    $('#emailerr').append('введите email');
                 }
                 if (passone.length < 8){
                     bool = false;
-                    $('#passoneerr').val('пароль должен иметь не менее 8 значений');
+                    $('#passoneerr').append('пароль должен иметь не менее 8 значений');
                 }
                 if (passtwo != passone){
                     bool = false;
-                    $('#passtwoerr').val('пароль не совпадает');
+                    $('#passtwoerr').append('пароль не совпадает');
                 }
                 if (bool){
                     text = firstname + "  " + lastname + "  " + email + "  " + passone;
@@ -43,35 +43,47 @@
             });
         });
 
+        var gettext;
+
         function request(text) {
-            $.get("/getUser", {user: text})
-                .done(function(data){
-                    if (data == "ok"){
-                        $('#itsok').val('Поздравляем, вы успешно зарегистрированы!');
-                        alert("reg ok");
-                    }
-                    else {
-                        $('#itsok').val('Регистрация не удалась!');
-                    }
-                })
+            gettext = new XMLHttpRequest();
+            var url = "http://localhost:8080/javaproproject/getUser";
+            var msg = "user="+text;
+            gettext.open("POST", url, true);
+            gettext.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            gettext.send(msg);
+            gettext.onreadystatechange = callback;
+        }
+
+        function callback(){
+            if(gettext.readyState == 4) {
+                if (gettext.status == 200) {
+                    $('#itsok').append('Поздравляем, вы успешно зарегистрированы!');
+                    alert("reg ok");
+                }
+                else {
+                    $('#itsok').append('Регистрация не удалась!');
+                    alert("reg no: Status=" + gettext.status);
+                }
+            }
         }
     </script>
 </head>
 <body>
 
     <input id="firstname" type="text" placeholder="введите свое имя">
-        <a id="firstnameerr">q</a>
+        <a id="firstnameerr"></a>
     <input id="lastname" type="text" placeholder="введите свою фамилию">
-        <a id="lastnameerr">q</a>
+        <a id="lastnameerr"></a>
     <input id="email" type="email" placeholder="введите свой email">
-        <a id="emailerr">q</a>
+        <a id="emailerr"></a>
     <input id="passone" type="password" placeholder="введите пароль">
-        <a id="passoneerr">q</a>
+        <a id="passoneerr"></a>
     <input id="passtwo" type="password" placeholder="повторите пароль">
-        <a id="passtwoerr">q</a>
+        <a id="passtwoerr"></a>
     <input id="button" type="button" value="Зарегистрироваться">
 
 
-<h2 id="itsok">FG</h2>
+<h2 id="itsok"></h2>
 </body>
 </html>
