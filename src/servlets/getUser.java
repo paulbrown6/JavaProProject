@@ -15,7 +15,7 @@ import user.User;
 @WebServlet("/getUser")
 public class getUser extends HttpServlet {
 
-    private String userurl = "files/text/users.txt";
+    private String userurl = "/files/text/users.txt";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

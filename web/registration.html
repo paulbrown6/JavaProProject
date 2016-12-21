@@ -59,6 +59,7 @@
             if(gettext.readyState == 4) {
                 if (gettext.status == 200) {
                     $('#itsok').append('Поздравляем, вы успешно зарегистрированы!');
+                    $('#itsok').append('<a href="index.jsp">Авторизоваться<a>');
                     alert("reg ok");
                 }
                 else {
