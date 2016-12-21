@@ -6,34 +6,34 @@
     <script type="text/javascript" src="files/jquery/jquery.js"></script>
     <script>
         $(document).ready(function () {
-            $('.button').click(function () {
+            $('#button').click(function () {
                 alert("click");
                 var bool = true;
                 var text;
-                var firstname = $('.firstname').val();
-                var lastname = $('.lastname').val();
-                var email = $('.email').val();
-                var passone = $('.passone').val();
-                var passtwo = $('.passtwo').val();
+                var firstname = $('#firstname').val();
+                var lastname = $('#lastname').val();
+                var email = $('#email').val();
+                var passone = $('#passone').val();
+                var passtwo = $('#passtwo').val();
                 if (firstname.length <= 0){
                     bool = false;
-                    $('.firstnameerr').val('введите имя');
+                    $('#firstnameerr').val('введите имя');
                 }
                 if (lastname.length <= 0){
                     bool = false;
-                    $('.lastnameerr').val('введите фамилию');
+                    $('#lastnameerr').val('введите фамилию');
                 }
                 if (email.length <= 0){
                     bool = false;
-                    $('.emailerr').val('введите имя');
+                    $('#emailerr').val('введите имя');
                 }
                 if (passone.length < 8){
                     bool = false;
-                    $('.passoneerr').val('пароль должен иметь не менее 8 значений');
+                    $('#passoneerr').val('пароль должен иметь не менее 8 значений');
                 }
                 if (passtwo != passone){
                     bool = false;
-                    $('.passtwoerr').val('пароль не совпадает');
+                    $('#passtwoerr').val('пароль не совпадает');
                 }
                 if (bool){
                     text = firstname + "  " + lastname + "  " + email + "  " + passone;
@@ -47,11 +47,11 @@
             $.get("/getUser", {user: text})
                 .done(function(data){
                     if (data == "ok"){
-                        $('.itsok').val('Поздравляем, вы успешно зарегистрированы!');
+                        $('#itsok').val('Поздравляем, вы успешно зарегистрированы!');
                         alert("reg ok");
                     }
                     else {
-                        $('.itsok').val('Регистрация не удалась!');
+                        $('#itsok').val('Регистрация не удалась!');
                     }
                 })
         }
@@ -60,18 +60,18 @@
 <body>
 
     <input id="firstname" type="text" placeholder="введите свое имя">
-        <a id="firstnameerr"></a>
+        <a id="firstnameerr">q</a>
     <input id="lastname" type="text" placeholder="введите свою фамилию">
-        <a id="lastnameerr"></a>
+        <a id="lastnameerr">q</a>
     <input id="email" type="email" placeholder="введите свой email">
-        <a id="emailerr"></a>
+        <a id="emailerr">q</a>
     <input id="passone" type="password" placeholder="введите пароль">
-        <a id="passoneerr"></a>
+        <a id="passoneerr">q</a>
     <input id="passtwo" type="password" placeholder="повторите пароль">
-        <a id="passtwoerr"></a>
+        <a id="passtwoerr">q</a>
     <input id="button" type="button" value="Зарегистрироваться">
 
 
-<h2 id="itsok"></h2>
+<h2 id="itsok">FG</h2>
 </body>
 </html>

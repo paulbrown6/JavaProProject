@@ -25,8 +25,9 @@ public class getUser extends HttpServlet {
         String email = text.split("  ")[2];
         String password = text.split("  ")[3];
         User newuser = new User(firstname, lastname, email, password);
-        File file = new File("files/users.txt");
+        File file = new File("files/text/users.txt");
         FileWriter fw = new FileWriter(file);
         fw.write(text);
+
     }
 }
