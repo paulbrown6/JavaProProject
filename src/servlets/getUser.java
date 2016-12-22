@@ -37,9 +37,5 @@ public class getUser extends HttpServlet {
         resp.setHeader("Cache-Control", "no-cache");
         resp.getWriter().write("ok");
         System.out.println("Все гуд! Пользователь " + newuser.getFirstname() + "успешно добавлен!");
-
-//        resp.setCharacterEncoding("UTF-8");
-//        PrintWriter out = resp.getWriter();
-//        out.print("ok");
     }
 }

@@ -6,11 +6,11 @@
     <link rel="stylesheet" type="text/css" href="files/css/style.css" />
     <title>Авторизация</title>
 </head>
-<body class="bodylog">
+<body class="body">
     <form action="log" method="post" class="login">
-        <input type="email" name="login" placeholder="введите email">
-        <input type="password" name="pass" placeholder="введите пароль">
-        <input type="submit" value="Войти">
+        <input class="emlog" type="email" name="login" placeholder="введите email">
+        <input class="passlog" type="password" name="pass" placeholder="введите пароль">
+        <input class="button" type="submit" value="Войти">
     </form>
     <a>Если вы здесь впервые, то <a href="registration.html">зарегистрируйтесь</a>!</a>
     <br/>
