@@ -13,8 +13,8 @@ import user.User;
 /**
  * Created by Paul Brown on 21.12.2016.
  */
-@WebServlet("/getUser")
-public class getUser extends HttpServlet {
+@WebServlet("/GetUser")
+public class GetUser extends HttpServlet {
 
 
     @Override

@@ -8,7 +8,6 @@
     <script>
         $(document).ready(function () {
             $('#button').click(function () {
-                alert("click");
                 var bool = true;
                 var text;
                 var firstname = $('#firstname').val();
@@ -38,7 +37,6 @@
                 }
                 if (bool){
                     text = firstname + "  " + lastname + "  " + email + "  " + passone;
-                    alert("log ok");
                     request(text);
                 }
             });
@@ -48,7 +46,7 @@
 
         function request(text) {
             gettext = new XMLHttpRequest();
-            var url = "http://localhost:8080/javaproproject/getUser";
+            var url = "http://localhost:8080/javaproproject/GetUser";
             var msg = "user="+text;
             gettext.open("POST", url, true);
             gettext.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -64,7 +62,7 @@
                     alert("reg ok");
                 }
                 else {
-                    $('#itsok').append('Регистрация не удалась!');
+                    $('#itsok').append('<a class="error">Регистрация не удалась!</a>');
                     alert("reg no: Status=" + gettext.status);
                 }
             }
@@ -97,8 +95,9 @@
     <p class="clearfix">
     <input id="button" type="button" value="Зарегистрироваться">
     </p>
+    <a id="itsok"></a>
 </form>
 
-<h2 id="itsok"></h2>
+
 </body>
 </html>
