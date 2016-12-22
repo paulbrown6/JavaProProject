@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
+import logistic.Logistic;
 import user.User;
 
 /**
@@ -15,7 +16,6 @@ import user.User;
 @WebServlet("/getUser")
 public class getUser extends HttpServlet {
 
-    private String userurl = "/files/text/users.txt";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -30,23 +30,13 @@ public class getUser extends HttpServlet {
         String email = text.split("  ")[2];
         String password = text.split("  ")[3];
         User newuser = new User(firstname, lastname, email, password);
-        try {
-            File file = new File(userurl);
-            if (!file.exists()){
-                file.createNewFile();
-            }
-            System.out.println(file.getPath());
-            BufferedWriter write = new BufferedWriter(new FileWriter(file.getAbsoluteFile(), true));
-            write.write("\n" + text);
-        }
-        catch (Exception e){
-            System.err.println(e);
-        }
+        Logistic log = new Logistic();
+        log.addUser(newuser);
 
         resp.setContentType("application/xml");
         resp.setHeader("Cache-Control", "no-cache");
         resp.getWriter().write("ok");
-        System.out.println("Все гуд!");
+        System.out.println("Все гуд! Пользователь " + newuser.getFirstname() + "успешно добавлен!");
 
 //        resp.setCharacterEncoding("UTF-8");
 //        PrintWriter out = resp.getWriter();
