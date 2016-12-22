@@ -1,3 +1,3 @@
 # JavaProProject
-MySQL
-Tomcat 8
+MySQL;
+Tomcat 8.
