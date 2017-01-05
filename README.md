@@ -1,3 +1,5 @@
 # JavaProProject
 MySQL;
-Tomcat 8.
+J2ee;
+Maven;
+Spring.
